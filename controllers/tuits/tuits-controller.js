@@ -2,10 +2,16 @@ import * as tuitsDao from './tuits-dao.js';
 
 const createTuit = async (req, res) => {
     const newTuit = req.body;
+    newTuit.username = "Nasa";
+    newTuit.handle = "@nasa";
+    newTuit.time = "2h";
+    newTuit.image = "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e5/NASA_logo.svg/2449px-NASA_logo.svg.png";
+    newTuit.replies = 0;
     newTuit.likes = 0;
     newTuit.liked = false;
     newTuit.dislikes = 0;
     newTuit.disliked = false;
+    newTuit.retuits = 0;
     const insertedTuit = await tuitsDao
         .createTuit(newTuit);
     res.json(insertedTuit);
